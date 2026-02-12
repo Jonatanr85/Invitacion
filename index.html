@@ -43,25 +43,11 @@
     .wrap{ max-width: 900px; margin: 0 auto; padding: 28px 16px 70px; }
 
     header{
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       margin-bottom:18px;
     }
-
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      padding:10px 14px; border-radius:16px;
-      background:linear-gradient(135deg, #ffffff10, #ffffff07);
-      border:1px solid var(--stroke);
-      backdrop-filter: blur(10px);
-    }
-
-    .dot{
-      width:14px; height:14px; border-radius:50%;
-      background: radial-gradient(circle at 35% 35%, var(--goldSoft), var(--gold));
-      box-shadow: 0 0 20px #ffd36f55;
-    }
-
-    .brand b{ letter-spacing:.3px; }
 
     .chip{
       font-size:13px; color:var(--muted);
@@ -251,37 +237,26 @@
 
     .panel.span2{ grid-column:1 / -1; }
 
-    /* Menú */
-    .menuBlock{ display:grid; gap:12px; margin-top:10px; }
-    .menuTitle{ font-weight:750; color:#fff6fb; margin-bottom:8px; }
-    .optionGrid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap:8px;
-    }
-    .opt{ position:relative; }
-    .opt input{ position:absolute; opacity:0; pointer-events:none; }
-    .opt label{
-      display:block;
-      padding:10px 10px;
-      border-radius:14px;
-      border:1px solid #ffffff22;
-      background:#ffffff0b;
-      cursor:pointer;
-      user-select:none;
-      line-height:1.2;
-      font-size:14px;
-    }
-    .opt label:hover{ background:#ffffff12; }
-    .opt input:checked + label{
-      border-color:#ffd36f66;
-      background: linear-gradient(135deg, #ff6fb122, #ffd36f22);
-      box-shadow: 0 0 0 1px #ffffff12 inset;
-    }
-    .menuHint{
+    .helper{
       margin-top:8px;
       font-size:13px;
       color: var(--muted);
+    }
+
+    .peopleSelect{
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid #ffffff33;
+      background:#120713dd;
+      color:var(--text);
+      font-size:14px;
+      min-width:160px;
+    }
+
+    .peopleSelect:focus{
+      outline:none;
+      border-color:#ffd36f88;
+      box-shadow:0 0 0 1px #ffd36f44;
     }
 
     .footRow{
@@ -299,13 +274,6 @@
 
   <div class="wrap">
     <header>
-      <div class="brand">
-        <span class="dot"></span>
-        <div>
-          <b>Invitación interactiva</b><br/>
-          <span style="font-size:12px;color:#ffeaf4c7">Rosa & dorado</span>
-        </div>
-      </div>
       <span class="chip" id="status">Música y sobres activos</span>
     </header>
 
@@ -363,52 +331,22 @@
                 <p class="muted">Tu presencia es lo más importante.</p>
               </div>
 
-              <!-- PANEL MENÚ -->
-              <div class="panel span2" id="menuPanel">
-                <h3>Menú (elige 1 de cada)</h3>
-                <p class="muted">Tu selección se incluirá en el WhatsApp.</p>
-
-                <div class="menuBlock">
-                  <div>
-                    <div class="menuTitle">Plato principal</div>
-                    <div class="optionGrid">
-                      <div class="opt"><input id="m1" type="radio" name="menu_main" value="Pollo Tradicional"><label for="m1">Pollo Tradicional</label></div>
-                      <div class="opt"><input id="m2" type="radio" name="menu_main" value="Pollo Finas hiervas"><label for="m2">Pollo Finas hiervas</label></div>
-                      <div class="opt"><input id="m3" type="radio" name="menu_main" value="Pollo Miel"><label for="m3">Pollo Miel</label></div>
-                      <div class="opt"><input id="m4" type="radio" name="menu_main" value="Pollo picoso"><label for="m4">Pollo picoso</label></div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div class="menuTitle">Acompañantes</div>
-                    <div class="optionGrid">
-                      <div class="opt"><input id="s1" type="radio" name="menu_side" value="Papa casco"><label for="s1">Papa casco</label></div>
-                      <div class="opt"><input id="s2" type="radio" name="menu_side" value="Papa francesa"><label for="s2">Papa francesa</label></div>
-                      <div class="opt"><input id="s3" type="radio" name="menu_side" value="Papa criolla"><label for="s3">Papa criolla</label></div>
-                      <div class="opt"><input id="s4" type="radio" name="menu_side" value="Croquetas de yuca"><label for="s4">Croquetas de yuca</label></div>
-                      <div class="opt"><input id="s5" type="radio" name="menu_side" value="Ensalada de la casa"><label for="s5">Ensalada de la casa</label></div>
-                      <div class="opt"><input id="s6" type="radio" name="menu_side" value="Aritos de cebolla"><label for="s6">Aritos de cebolla</label></div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div class="menuTitle">Bebidas</div>
-                    <div class="optionGrid">
-                      <div class="opt"><input id="d1" type="radio" name="menu_drink" value="Gaseosa"><label for="d1">Gaseosa</label></div>
-                      <div class="opt"><input id="d2" type="radio" name="menu_drink" value="Agua"><label for="d2">Agua</label></div>
-                      <div class="opt"><input id="d3" type="radio" name="menu_drink" value="Limonada"><label for="d3">Limonada</label></div>
-                      <div class="opt"><input id="d4" type="radio" name="menu_drink" value="Te"><label for="d4">Te</label></div>
-                    </div>
-                  </div>
-                </div>
-
+              <!-- PANEL PERSONAS -->
+              <div class="panel span2" id="peoplePanel">
+                <h3>¿Cuántos asistirán?</h3>
+                <p class="muted">Incluyéndote. Esto se agregará al mensaje de WhatsApp.</p>
                 <div class="ctaRow" style="margin-top:10px">
-                  <button class="btn small" id="clearMenuBtn" type="button">Limpiar selección</button>
+                  <select id="peopleSelect" class="peopleSelect">
+                    <option value="1">1 persona</option>
+                    <option value="2">2 personas</option>
+                    <option value="3">3 personas</option>
+                    <option value="4">4 personas</option>
+                    <option value="5+">5 o más personas</option>
+                  </select>
                 </div>
-
-                <div class="menuHint" id="menuStatus">Selecciona 1 opción en cada categoría.</div>
+                <p class="helper" id="peopleStatus">Confirmarás para 1 persona.</p>
               </div>
-              <!-- FIN PANEL MENÚ -->
+              <!-- FIN PANEL PERSONAS -->
 
               <div class="panel" id="confirmPanel">
                 <h3>Confirmar asistencia</h3>
@@ -452,21 +390,21 @@
     whatsappNumber: "+573209852541",
   };
 
-  // ===== Menu helpers =====
-  function getMenuSelection(){
-    const main  = document.querySelector('input[name="menu_main"]:checked')?.value || "";
-    const side  = document.querySelector('input[name="menu_side"]:checked')?.value || "";
-    const drink = document.querySelector('input[name="menu_drink"]:checked')?.value || "";
-    return { main, side, drink };
+  // ===== Personas =====
+  const peopleSelect = document.getElementById("peopleSelect");
+  const peopleStatus = document.getElementById("peopleStatus");
+
+  function readablePeople(v){
+    if (v === "1")  return "1 persona";
+    if (v === "5+") return "5 o más personas";
+    return v + " personas";
   }
 
   function buildWhatsAppLink() {
     const number = CONFIG.whatsappNumber.replace(/[^\d]/g, "");
-    const menu = getMenuSelection();
+    const people = peopleSelect.value || "1";
 
-    const menuLine = (menu.main && menu.side && menu.drink)
-      ? `\n\n🍗 Menú:\n- Plato: ${menu.main}\n- Acompañante: ${menu.side}\n- Bebida: ${menu.drink}`
-      : `\n\n🍗 Menú: (pendiente de seleccionar)`;
+    const peopleLine = `\n\n👥 Asistirán: ${readablePeople(people)}`;
 
     const msg =
 `¡Hola! 🎉 Confirmo mi asistencia al cumpleaños de Nicolle
@@ -477,31 +415,11 @@
 ${CONFIG.placeAddr}
 🗺️ Maps: ${CONFIG.mapsUrl}
 
-🎁 Nota: Lluvia de sobres${menuLine}
+🎁 Nota: Lluvia de sobres${peopleLine}
 
 ¡Gracias!`;
 
     return { url: `https://wa.me/${number}?text=${encodeURIComponent(msg)}`, msg };
-  }
-
-  const MENU_KEY = "nicolle_menu_v1";
-
-  function saveMenuToStorage(sel){
-    try { localStorage.setItem(MENU_KEY, JSON.stringify(sel)); } catch {}
-  }
-
-  function loadMenuFromStorage(){
-    try {
-      const raw = localStorage.getItem(MENU_KEY);
-      return raw ? JSON.parse(raw) : null;
-    } catch { return null; }
-  }
-
-  function applyMenuToUI(sel){
-    if (!sel) return;
-    if (sel.main)  document.querySelector(`input[name="menu_main"][value="${sel.main}"]`)?.click();
-    if (sel.side)  document.querySelector(`input[name="menu_side"][value="${sel.side}"]`)?.click();
-    if (sel.drink) document.querySelector(`input[name="menu_drink"][value="${sel.drink}"]`)?.click();
   }
 
   // ===== Elements =====
@@ -523,51 +441,18 @@ ${CONFIG.placeAddr}
   const waBtn = document.getElementById("waBtn");
   const copyBtn = document.getElementById("copyBtn");
 
-  const menuStatus = document.getElementById("menuStatus");
-  const clearMenuBtn = document.getElementById("clearMenuBtn");
-
   // Place + links
   mapsBtn.href = CONFIG.mapsUrl;
 
-  // ===== WhatsApp + menú wiring =====
-  let waState = { url:"#", msg:"" };
+  // ===== WhatsApp wiring =====
+  let waState = buildWhatsAppLink();
+  waBtn.href = waState.url;
 
-  function updateMenuAndWhatsApp(){
-    const sel = getMenuSelection();
-    saveMenuToStorage(sel);
-
-    const complete = !!(sel.main && sel.side && sel.drink);
-    menuStatus.textContent = complete
-      ? `Menú listo: ${sel.main} + ${sel.side} + ${sel.drink}.`
-      : "Selecciona 1 opción en cada categoría.";
-
+  peopleSelect.addEventListener("change", () => {
+    const txt = readablePeople(peopleSelect.value);
+    peopleStatus.textContent = "Confirmarás para " + txt + ".";
     waState = buildWhatsAppLink();
     waBtn.href = waState.url;
-  }
-
-  // Restaurar menú si existe
-  applyMenuToUI(loadMenuFromStorage());
-  updateMenuAndWhatsApp();
-
-  // Cambios en menú
-  document.querySelectorAll('input[name="menu_main"], input[name="menu_side"], input[name="menu_drink"]')
-    .forEach(el => el.addEventListener("change", updateMenuAndWhatsApp));
-
-  clearMenuBtn.addEventListener("click", () => {
-    document.querySelectorAll('input[name="menu_main"], input[name="menu_side"], input[name="menu_drink"]')
-      .forEach(el => el.checked = false);
-    saveMenuToStorage({main:"", side:"", drink:""});
-    updateMenuAndWhatsApp();
-  });
-
-  // Validar que el menú esté completo antes de abrir WhatsApp
-  waBtn.addEventListener("click", (e) => {
-    const sel = getMenuSelection();
-    const complete = !!(sel.main && sel.side && sel.drink);
-    if (!complete){
-      e.preventDefault();
-      alert("Por favor selecciona Plato + Acompañante + Bebida antes de confirmar.");
-    }
   });
 
   // Copiar mensaje
@@ -581,7 +466,7 @@ ${CONFIG.placeAddr}
     }
   });
 
-  // ===== Flip open/close =====
+  // ===== Flip open/close (solo con botones) =====
   function openCard(){
     card.classList.add("open");
     statusChip.textContent = "¡Nos vemos el 14!";
@@ -599,13 +484,6 @@ ${CONFIG.placeAddr}
 
   openBtn.addEventListener("click", openCard);
   closeBtn.addEventListener("click", closeCard);
-
-  card.addEventListener("click", (e) => {
-    if (e.target.closest("button,a")) return;
-    card.classList.toggle("open");
-    if (card.classList.contains("open")) openCard();
-    else closeCard();
-  });
 
   // ===== Countdown =====
   const target = new Date(CONFIG.dateISO).getTime();
@@ -768,4 +646,5 @@ ${CONFIG.placeAddr}
 </script>
 </body>
 </html>
+
 
